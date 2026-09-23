@@ -25,7 +25,7 @@ for rel in pages:
  if count(r"<title>[^<]+</title>",html)!=1: fail(f"{rel}: expected exactly one title")
  if not re.search(r'<meta\s+name="description"\s+content="[^"]+"',html,re.I): fail(f"{rel}: missing meta description")
  if not re.search(r'<meta\s+name="robots"\s+content="index,follow"',html,re.I): fail(f"{rel}: missing index,follow robots")
- canon=re.search(r'<link\s+rel="canonical"\s+href="([^"]+)"',html,re.I); expected=SITE+(rel if rel!="index.html" else "")
+ canon=re.search(r'<link\s+rel="canonical"\s+href="([^"]+)"',html,re.I); expected=SITE+("guides/" if rel=="guides/index.html" else (rel if rel!="index.html" else ""))
  if not canon or canon.group(1)!=expected: fail(f"{rel}: canonical mismatch")
  if count(r"<h1\b",html)!=1: fail(f"{rel}: expected exactly one h1")
  if rel=="index.html":
