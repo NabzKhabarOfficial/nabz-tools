@@ -32,3 +32,11 @@ body{font-size:15px}.logo{font-size:21px}.theme-btn{width:42px;height:42px}
 .card h3{font-size:15px;line-height:1.65;margin:0 0 3px;padding-left:22px}.card p{font-size:12.5px;line-height:1.85;padding-left:4px}.card em{font-size:9px}
 .card-arrow{left:12px;bottom:10px;font-size:14px}.privacy-strip h2{font-size:16px;line-height:1.6}.privacy-strip p{line-height:1.9}
 }
+
+/* Related tools */
+.related-tools{margin:2.5rem 0 1rem;padding-top:1.5rem;border-top:1px solid rgba(127,127,127,.18)}
+.related-tools h2{margin-bottom:1rem}
+.related-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.related-tool{display:flex;flex-direction:column;gap:.45rem;text-decoration:none;color:inherit;min-height:90px}
+.related-tool span{font-size:.9rem;opacity:.72;line-height:1.7}
+@media (max-width:700px){.related-grid{grid-template-columns:1fr}}
