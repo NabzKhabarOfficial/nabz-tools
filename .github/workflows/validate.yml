@@ -1,0 +1,14 @@
+name: Validate NABZ Tools
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run static validation
+        run: python3 tests/validate_site.py
