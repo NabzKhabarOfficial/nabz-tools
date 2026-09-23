@@ -3,30 +3,76 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NABZ Tools | ابزارهای آنلاین رایگان</title>
-<meta name="description" content="ابزارهای آنلاین رایگان، سریع و حریم‌خصوصی‌محور برای متن، تصویر، محاسبات، تبدیل واحد و QR Code.">
-<meta name="robots" content="index,follow"><meta name="theme-color" content="#172033">
+<meta name="description" content="مجموعه ابزارهای آنلاین رایگان NABZ برای متن، تصویر، فایل، محاسبات و برنامه‌نویسی؛ سریع و تا حد ممکن بدون ارسال داده به سرور.">
+<meta name="robots" content="index,follow"><meta name="theme-color" content="#07111f">
 <link rel="canonical" href="https://nabzkhabarofficial.github.io/nabz-tools/"><link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="hero"><nav><a class="logo" href="./">NABZ Tools</a><span>ابزارهای آنلاین رایگان</span></nav>
-<div class="hero-content"><p class="eyebrow">رایگان • سریع • بدون نصب</p><h1>ابزارهای کاربردی، همین‌جا</h1><p>ابزارهای ساده و سریع برای متن، تصویر، محاسبات و فایل‌ها؛ تا حد ممکن پردازش‌ها داخل مرورگر انجام می‌شوند.</p></div></header>
-<main><section class="tools"><h2>ابزارها</h2><div class="grid">
-<a class="card" href="tools/word-counter.html"><span>✍️</span><h3>شمارشگر متن</h3><p>تعداد کلمات و کاراکترها را سریع بشمار.</p></a>
-<a class="card" href="tools/percentage.html"><span>🧮</span><h3>محاسبه درصد</h3><p>محاسبات درصدی روزمره را انجام بده.</p></a>
-<a class="card" href="tools/unit-converter.html"><span>📐</span><h3>تبدیل واحد</h3><p>واحدهای پرکاربرد طول را تبدیل کن.</p></a>
-<a class="card" href="tools/qr-generator.html"><span>▦</span><h3>ساخت QR Code</h3><p>برای متن یا لینک، بدون ارسال داده به سرور، QR بساز.</p></a>
-<a class="card" href="tools/image-compressor.html"><span>🖼️</span><h3>فشرده‌سازی تصویر</h3><p>حجم تصویر را داخل مرورگر کاهش بده.</p></a>
-<a class="card" href="tools/image-resizer.html"><span>↔️</span><h3>تغییر اندازه تصویر</h3><p>ابعاد و فرمت تصویر را تغییر بده.</p></a>
-<a class="card" href="tools/image-converter.html"><span>🔄</span><h3>تبدیل فرمت تصویر</h3><p>JPG، PNG و WebP را تبدیل کن.</p></a>
-<a class="card" href="tools/pdf-tools.html"><span>📄</span><h3>تصویر به PDF</h3><p>چند تصویر را به یک PDF تبدیل کن.</p></a>
-<a class="card" href="tools/json-formatter.html"><span>{}</span><h3>JSON Formatter</h3><p>فرمت و اعتبارسنجی JSON.</p></a>
-<a class="card" href="tools/base64.html"><span>🔐</span><h3>Base64 Encoder / Decoder</h3><p>تبدیل متن و Base64.</p></a>
-<a class="card" href="tools/url-encoder.html"><span>🔗</span><h3>URL Encoder / Decoder</h3><p>Encode و Decode کردن URL.</p></a>
-<a class="card" href="tools/password-generator.html"><span>🔑</span><h3>مولد رمز عبور</h3><p>ساخت رمز تصادفی داخل مرورگر.</p></a>
-<a class="card" href="tools/text-case.html"><span>Aa</span><h3>تبدیل حالت متن</h3><p>تبدیل حروف بزرگ و کوچک.</p></a>
-<a class="card" href="tools/color-converter.html"><span>🎨</span><h3>مبدل رنگ HEX / RGB</h3><p>تبدیل فرمت‌های رایج رنگ.</p></a>
-<a class="card" href="tools/timestamp.html"><span>⏱️</span><h3>مبدل Timestamp</h3><p>تبدیل Unix Timestamp و تاریخ.</p></a>
-<a class="card" href="tools/age-calculator.html"><span>🎂</span><h3>محاسبه سن</h3><p>محاسبه سن بر اساس تاریخ تولد.</p></a>
-<a class="card" href="tools/date-difference.html"><span>📅</span><h3>اختلاف دو تاریخ</h3><p>محاسبه فاصله روزها بین دو تاریخ.</p></a>
-<a class="card" href="tools/bmi.html"><span>⚖️</span><h3>محاسبه BMI</h3><p>محاسبه شاخص توده بدنی.</p></a></div></section></main><footer>NABZ Tools — ابزارهای آنلاین رایگان</footer>
+<body class="home">
+<header class="hero home-hero">
+<nav>
+<a class="logo" href="./"><b>NABZ</b> Tools</a>
+<div class="nav-actions"><span>رایگان • بدون نصب</span><button id="themeToggle" class="theme-btn" type="button" aria-label="تغییر حالت نمایش">☾</button></div>
+</nav>
+<div class="hero-content home-hero-content">
+<div class="hero-copy">
+<p class="eyebrow">⚡ ابزارهای روزمره، یکجا و رایگان</p>
+<h1>هر ابزاری که لازم داری، <strong>همین‌جا.</strong></h1>
+<p>۱۸ ابزار کاربردی برای متن، تصویر، فایل، محاسبات و برنامه‌نویسی؛ سریع، ساده و تا حد ممکن پردازش‌شده داخل مرورگر.</p>
+<div class="hero-actions"><a class="hero-btn primary" href="#tools">مشاهده ابزارها <span>←</span></a><a class="hero-btn ghost" href="#popular">ابزارهای محبوب</a></div>
+</div>
+<div class="hero-orbit" aria-hidden="true"><div class="orbit-core">N</div><i>✍️</i><i>🖼️</i><i>🔗</i><i>🧮</i></div>
+</div>
+</header>
+
+<main>
+<section class="quick-stats">
+<div><b>۱۸</b><span>ابزار فعال</span></div><div><b>۱۰۰٪</b><span>رایگان</span></div><div><b>۰</b><span>نصب لازم</span></div><div><b>🔒</b><span>مرورگرمحور</span></div>
+</section>
+
+<section class="tools home-tools" id="tools">
+<div class="section-head">
+<div><p class="section-kicker">کتابخانه ابزارها</p><h2>چه کاری می‌خواهی انجام بدهی؟</h2><p>دسته را انتخاب کن یا نام ابزار را جستجو کن.</p></div>
+<div class="search-wrap"><span>⌕</span><input id="toolSearch" type="search" placeholder="جستجوی ابزار..." aria-label="جستجوی ابزار"></div>
+</div>
+<div class="filter-row" role="tablist" aria-label="دسته‌بندی ابزارها">
+<button class="filter active" data-filter="all">همه <small>۱۸</small></button>
+<button class="filter" data-filter="text">متن و کدنویسی</button>
+<button class="filter" data-filter="image">تصویر و فایل</button>
+<button class="filter" data-filter="calc">محاسبات</button>
+</div>
+<div class="grid home-grid">
+<a class="card tool-item featured" data-category="text" data-name="شمارشگر متن word counter" href="tools/word-counter.html"><span>✍️</span><div><em>پرکاربرد</em><h3>شمارشگر متن</h3><p>تعداد کلمات و کاراکترها را سریع بشمار.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="calc" data-name="محاسبه درصد percentage" href="tools/percentage.html"><span>🧮</span><div><h3>محاسبه درصد</h3><p>محاسبات درصدی روزمره را انجام بده.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="calc" data-name="تبدیل واحد unit converter" href="tools/unit-converter.html"><span>📐</span><div><h3>تبدیل واحد</h3><p>واحدهای پرکاربرد طول را تبدیل کن.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item featured" data-category="image" data-name="ساخت qr code qr generator" href="tools/qr-generator.html"><span>▦</span><div><em>محبوب</em><h3>ساخت QR Code</h3><p>برای متن یا لینک، QR بساز.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item featured" data-category="image" data-name="فشرده سازی تصویر image compressor" href="tools/image-compressor.html"><span>🖼️</span><div><em>محبوب</em><h3>فشرده‌سازی تصویر</h3><p>حجم تصویر را داخل مرورگر کاهش بده.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="image" data-name="تغییر اندازه تصویر image resizer" href="tools/image-resizer.html"><span>↔️</span><div><h3>تغییر اندازه تصویر</h3><p>ابعاد و فرمت تصویر را تغییر بده.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="image" data-name="تبدیل فرمت تصویر image converter" href="tools/image-converter.html"><span>🔄</span><div><h3>تبدیل فرمت تصویر</h3><p>JPG، PNG و WebP را تبدیل کن.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="image" data-name="تصویر به pdf pdf tools" href="tools/pdf-tools.html"><span>📄</span><div><h3>تصویر به PDF</h3><p>چند تصویر را به یک PDF تبدیل کن.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="text" data-name="json formatter json فرمت" href="tools/json-formatter.html"><span>{}</span><div><h3>JSON Formatter</h3><p>فرمت و اعتبارسنجی JSON.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="text" data-name="base64 encoder decoder" href="tools/base64.html"><span>🔐</span><div><h3>Base64 Encoder / Decoder</h3><p>تبدیل متن و Base64.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="text" data-name="url encoder decoder لینک" href="tools/url-encoder.html"><span>🔗</span><div><h3>URL Encoder / Decoder</h3><p>Encode و Decode کردن URL.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item featured" data-category="text" data-name="مولد رمز عبور password generator" href="tools/password-generator.html"><span>🔑</span><div><em>کاربردی</em><h3>مولد رمز عبور</h3><p>ساخت رمز تصادفی امن داخل مرورگر.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="text" data-name="تبدیل حالت متن text case" href="tools/text-case.html"><span>Aa</span><div><h3>تبدیل حالت متن</h3><p>تبدیل حروف بزرگ و کوچک.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="text" data-name="مبدل رنگ color converter hex rgb" href="tools/color-converter.html"><span>🎨</span><div><h3>مبدل رنگ HEX / RGB</h3><p>تبدیل فرمت‌های رایج رنگ.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="calc" data-name="مبدل timestamp زمان unix" href="tools/timestamp.html"><span>⏱️</span><div><h3>مبدل Timestamp</h3><p>تبدیل Unix Timestamp و تاریخ.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="calc" data-name="محاسبه سن age calculator" href="tools/age-calculator.html"><span>🎂</span><div><h3>محاسبه سن</h3><p>محاسبه سن بر اساس تاریخ تولد.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="calc" data-name="اختلاف دو تاریخ date difference" href="tools/date-difference.html"><span>📅</span><div><h3>اختلاف دو تاریخ</h3><p>محاسبه فاصله روزها بین دو تاریخ.</p></div><b class="card-arrow">←</b></a>
+<a class="card tool-item" data-category="calc" data-name="محاسبه bmi شاخص توده بدنی" href="tools/bmi.html"><span>⚖️</span><div><h3>محاسبه BMI</h3><p>محاسبه شاخص توده بدنی.</p></div><b class="card-arrow">←</b></a>
+</div>
+<div id="emptyState" class="empty-state" hidden>ابزاری با این مشخصات پیدا نشد.</div>
+</section>
+
+<section class="privacy-strip" id="popular"><div class="privacy-icon">🔒</div><div><h2>سریع، ساده و حریم‌خصوصی‌محور</h2><p>تا حد ممکن پردازش‌ها در مرورگر انجام می‌شوند؛ یعنی برای بسیاری از ابزارها نیازی به ارسال فایل یا متن به سرور نیست.</p></div><a href="#tools">شروع کن ←</a></section>
+</main>
+<footer>NABZ Tools <span>•</span> ابزارهای آنلاین رایگان و کاربردی</footer>
+
+<script>
+const search=document.getElementById('toolSearch'), cards=[...document.querySelectorAll('.tool-item')], filters=[...document.querySelectorAll('.filter')], empty=document.getElementById('emptyState');
+let active='all';
+function render(){const q=search.value.trim().toLowerCase();let shown=0;cards.forEach(c=>{const ok=(active==='all'||c.dataset.category===active)&&(!q||c.dataset.name.toLowerCase().includes(q));c.hidden=!ok;if(ok)shown++});empty.hidden=shown!==0}
+search.addEventListener('input',render);
+filters.forEach(b=>b.addEventListener('click',()=>{active=b.dataset.filter;filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}));
+document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark');document.getElementById('themeToggle').textContent=document.body.classList.contains('dark')?'☀':'☾'});
+</script>
 </body></html>
