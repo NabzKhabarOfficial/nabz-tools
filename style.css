@@ -226,3 +226,54 @@ body{font-size:15px}.logo{font-size:21px}.theme-btn{width:42px;height:42px}
     gap:11px;
   }
 }
+
+
+/* =========================
+   Mobile-first tool interface v2
+   ========================= */
+.tool-page{width:100%;max-width:920px;margin:0 auto;padding:22px 16px 64px}
+.tool-page > a:first-child{margin-bottom:8px}
+.tool-page > h1{font-size:clamp(28px,8vw,44px);line-height:1.35;margin:16px 0 12px}
+.tool-page > .seo-intro{font-size:14px;line-height:2;margin-bottom:18px}
+.tool-page textarea,.tool-page > textarea{width:100%!important;max-width:100%;min-width:0;min-height:210px;padding:15px!important;font-size:16px;line-height:1.9;border-radius:15px!important;margin:0 0 14px!important}
+.tool-page .grid{display:grid;width:100%;max-width:100%;min-width:0;gap:12px}
+.tool-page .grid > *{min-width:0;max-width:100%}
+.tool-page > .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tool-page .grid .card{width:100%;min-width:0;overflow:hidden}
+.tool-page > .grid .card{padding:17px;text-align:center}
+.tool-page > .grid .card h3{margin:0 0 6px;font-size:14px}
+.tool-page > .grid .card strong{display:block;font-size:24px;line-height:1.4}
+.tool-page label{line-height:1.8}
+.tool-page input,.tool-page select,.tool-page textarea{max-width:100%;min-width:0}
+.tool-page input[type=file]{width:100%;overflow:hidden}
+.tool-page .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;width:100%}
+.tool-page .actions .btn,.tool-page .actions button,.tool-page .actions a{width:100%;min-height:46px;margin:0}
+.tool-page pre{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;font-size:13px}
+.tool-page .related-tools{margin-top:30px}
+.tool-page .related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.tool-page .related-tool{min-width:0;min-height:112px;padding:15px}
+.tool-page .related-tool strong,.tool-page .related-tool span{overflow-wrap:anywhere}
+@media(max-width:680px){
+ .tool-page{padding:14px 12px 48px}
+ .tool-page > a:first-child{width:100%;justify-content:center;min-height:44px;margin-bottom:5px}
+ .tool-page > h1{font-size:30px;letter-spacing:0;margin:15px 0 10px}
+ .tool-page > .seo-intro{padding:13px 14px;font-size:13px;line-height:2;border-right-width:3px}
+ .tool-page > .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .tool-page .grid{gap:10px}
+ .tool-page > .grid .card{padding:14px 10px;border-radius:15px}
+ .tool-page > .grid .card h3{font-size:13px;line-height:1.7}
+ .tool-page > .grid .card strong{font-size:22px}
+ .tool-page .actions{grid-template-columns:1fr}
+ .tool-page .related-grid{display:flex;overflow-x:auto;gap:10px;padding:2px 2px 8px;scroll-snap-type:x proximity;scrollbar-width:thin}
+ .tool-page .related-tool{flex:0 0 78%;scroll-snap-align:start;min-height:108px}
+ .tool-page .related-tool strong{font-size:14px;line-height:1.7}
+ .tool-page .related-tool span{font-size:12px;line-height:1.8}
+ .tool-page .btn,.tool-page button:not(.btn){min-height:46px;touch-action:manipulation}
+ .tool-page input,.tool-page select,.tool-page textarea{font-size:16px!important}
+}
+@media(max-width:380px){
+ .tool-page{padding-left:9px;padding-right:9px}
+ .tool-page > h1{font-size:27px}
+ .tool-page > .grid .card strong{font-size:20px}
+ .tool-page .related-tool{flex-basis:84%}
+}
