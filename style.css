@@ -16,3 +16,19 @@ footer{text-align:center;padding:10px 20px 38px;color:var(--muted);font-size:13p
 .dark{--bg:#070d18;--surface:#101a2b;--surface2:#172338;--text:#eef4ff;--muted:#9aabc2;--line:#26344b;--shadow:0 18px 55px #0007}.dark .search-wrap,.dark .filter,.dark .card,.dark .quick-stats div,.dark .tool-card input,.dark .tool-card select,.dark .tool-card textarea{background:var(--surface)}.dark .card>span{background:#1b2740}.dark .card em{background:#2d2041;color:#d8b4fe}.dark .privacy-strip{background:#141b31;border-color:#302a52}.dark .privacy-icon{background:#1b2740}.dark .filter.active,.dark .filter:hover{background:#fff;color:#101827;border-color:#fff}
 @media(max-width:900px){.hero-content{gap:20px}.hero-orbit{flex-basis:230px;width:230px;height:230px}.orbit-core{inset:72px}.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.hero{padding:15px 5% 75px}.nav-actions>span{display:none}.hero-content{margin-top:45px;display:block}.hero h1{font-size:39px;letter-spacing:-.5px}.hero p{font-size:15px}.hero-orbit{display:none}.hero-actions{display:grid;grid-template-columns:1fr 1fr}.hero-btn{text-align:center;padding:12px 8px}.quick-stats{grid-template-columns:repeat(2,1fr);padding:0 12px;margin-top:-25px}.quick-stats div{border-radius:0!important}.quick-stats div:first-child{border-radius:15px 0 0 0!important}.quick-stats div:nth-child(2){border-radius:0 15px 0 0!important}.quick-stats div:nth-child(3){border-radius:0 0 0 15px!important}.quick-stats div:last-child{border-radius:0 0 15px 0!important}.tools{margin:50px auto;padding:0 12px}.section-head{display:block}.section-head h2{font-size:24px}.search-wrap{width:100%;margin-top:18px}.grid{grid-template-columns:1fr;gap:13px}.card{min-height:125px;padding:18px}.privacy-strip{margin:10px 12px 60px;padding:20px;align-items:flex-start;flex-wrap:wrap}.privacy-strip a{width:100%;margin:0}.tool-card{margin-top:25px;padding:0 12px}.tool-card>.card{padding:21px}}
+
+/* Mobile typography + layout hardening */
+html,body{max-width:100%;overflow-x:hidden}
+body{font-family:Tahoma,"Segoe UI",Arial,sans-serif;text-rendering:optimizeLegibility}
+.card>div{min-width:0;flex:1}.card h3,.card p,.section-head h2,.section-head p,.privacy-strip h2,.privacy-strip p{overflow-wrap:anywhere;word-break:normal}
+.hero-copy{min-width:0}.hero h1,.hero p{overflow-wrap:anywhere}
+@media(max-width:680px){
+body{font-size:15px}.logo{font-size:21px}.theme-btn{width:42px;height:42px}
+.hero h1{font-size:clamp(32px,9vw,40px);line-height:1.3;margin:16px 0 12px}.hero p{line-height:1.95}
+.hero-actions{grid-template-columns:1fr;gap:9px}.hero-btn{width:100%;padding:13px 12px}
+.section-head h2{line-height:1.45;margin:4px 0 5px}.section-head p:last-child{line-height:1.9}
+.filter-row{gap:7px}.filter{font-size:13px;padding:8px 12px}
+.card{align-items:flex-start;gap:12px;border-radius:17px}.card>span{flex-basis:48px;width:48px;height:48px;border-radius:14px;font-size:22px}
+.card h3{font-size:15px;line-height:1.65;margin:0 0 3px;padding-left:22px}.card p{font-size:12.5px;line-height:1.85;padding-left:4px}.card em{font-size:9px}
+.card-arrow{left:12px;bottom:10px;font-size:14px}.privacy-strip h2{font-size:16px;line-height:1.6}.privacy-strip p{line-height:1.9}
+}
