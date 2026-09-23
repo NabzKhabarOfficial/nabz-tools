@@ -11,7 +11,7 @@
 <header class="hero home-hero">
 <nav>
 <a class="logo" href="./"><b>NABZ</b> Tools</a>
-<div class="nav-actions"><span>رایگان • بدون نصب</span><button id="themeToggle" class="theme-btn" type="button" aria-label="تغییر حالت نمایش">☾</button></div>
+<div class="nav-actions"><span>رایگان • بدون نصب</span><button id="themeToggle" class="theme-btn" type="button" aria-label="تغییر حالت نمایش" aria-pressed="false">☾</button></div>
 </nav>
 <div class="hero-content home-hero-content">
 <div class="hero-copy">
@@ -68,11 +68,14 @@
 <footer>NABZ Tools <span>•</span> ابزارهای آنلاین رایگان و کاربردی</footer>
 
 <script>
-const search=document.getElementById('toolSearch'), cards=[...document.querySelectorAll('.tool-item')], filters=[...document.querySelectorAll('.filter')], empty=document.getElementById('emptyState');
+const search=document.getElementById('toolSearch'), cards=[...document.querySelectorAll('.tool-item')], filters=[...document.querySelectorAll('.filter')], empty=document.getElementById('emptyState'), themeToggle=document.getElementById('themeToggle');
 let active='all';
 function render(){const q=search.value.trim().toLowerCase();let shown=0;cards.forEach(c=>{const ok=(active==='all'||c.dataset.category===active)&&(!q||c.dataset.name.toLowerCase().includes(q));c.hidden=!ok;if(ok)shown++});empty.hidden=shown!==0}
 search.addEventListener('input',render);
 filters.forEach(b=>b.addEventListener('click',()=>{active=b.dataset.filter;filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}));
-document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark');document.getElementById('themeToggle').textContent=document.body.classList.contains('dark')?'☀':'☾'});
+function setTheme(mode){document.body.classList.toggle('dark',mode==='dark');themeToggle.textContent=mode==='dark'?'☀':'☾';themeToggle.setAttribute('aria-pressed',mode==='dark'?'true':'false');themeToggle.setAttribute('aria-label',mode==='dark'?'فعال کردن حالت روز':'فعال کردن حالت شب');localStorage.setItem('nabz-theme',mode)}
+const savedTheme=localStorage.getItem('nabz-theme');
+setTheme(savedTheme==='dark'?'dark':savedTheme==='light'?'light':(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+themeToggle.addEventListener('click',()=>setTheme(document.body.classList.contains('dark')?'light':'dark'));
 </script>
 </body></html>
