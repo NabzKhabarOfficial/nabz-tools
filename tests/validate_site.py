@@ -33,13 +33,11 @@ for rel in pages:
   if '"@type":"FAQPage"' not in html: fail("index.html: missing FAQPage JSON-LD")
   if 'id="faq"' not in html or '<details>' not in html: fail("index.html: visible FAQ section missing")
  elif rel.startswith("tools/"):
-  pass
- elif rel.startswith("guides/"):
-  for token in ['property="og:title"','property="og:description"','property="og:url"','name="twitter:card"','"@type":"BreadcrumbList"']:
+  for token in ['property="og:title"','property="og:description"','property="og:url"','name="twitter:card"','class="related-tools"','"@type":"BreadcrumbList"']:
    if token not in html: fail(f"{rel}: missing {token}")
   if 'href="../style.css"' not in html: fail(f"{rel}: missing stylesheet")
-  if '<article' in html: pass
-  for token in ['property="og:title"','property="og:description"','property="og:url"','name="twitter:card"','class="related-tools"','"@type":"BreadcrumbList"']:
+ elif rel.startswith("guides/"):
+  for token in ['property="og:title"','property="og:description"','property="og:url"','name="twitter:card"','"@type":"BreadcrumbList"']:
    if token not in html: fail(f"{rel}: missing {token}")
   if 'href="../style.css"' not in html: fail(f"{rel}: missing stylesheet")
  else:
