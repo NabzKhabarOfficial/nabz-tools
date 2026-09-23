@@ -1,21 +1,46 @@
 # NABZ Tools
 
-Free online tools project.
+مجموعه‌ای از ابزارهای آنلاین رایگان و سبک برای استفاده روزمره.
 
-## MVP
-- Image compression
-- Image resize
-- JPG/PNG/WebP conversion
-- QR code generator
-- Word and character counter
-- Percentage calculator
-- Unit converter
-- Date converter
+## ابزارهای فعلی
 
-## Principles
-- Free-first
-- No paid dependency in the MVP
-- Client-side processing where practical
-- Privacy-first: user files should stay in the browser when possible
-- SEO-ready
-- Automation-ready
+### متن و کدنویسی
+- شمارشگر کلمات و کاراکترها
+- JSON Formatter
+- Base64 Encoder / Decoder
+- URL Encoder / Decoder
+- تبدیل حالت متن
+- مولد رمز عبور
+
+### تصویر و فایل
+- فشرده‌سازی تصویر
+- تغییر اندازه تصویر
+- تبدیل JPG / PNG / WebP
+- تبدیل چند تصویر به PDF
+- ساخت QR Code
+
+### محاسبات و تبدیل‌ها
+- محاسبه درصد
+- تبدیل واحد
+- مبدل رنگ HEX / RGB
+- مبدل Unix Timestamp
+- محاسبه سن
+- اختلاف دو تاریخ
+- محاسبه BMI
+
+## اصول پروژه
+
+- کاملاً رایگان و بدون وابستگی به سرویس پولی
+- پردازش داخل مرورگر تا حد امکان
+- فایل‌های کاربر تا حد امکان از مرورگر خارج نمی‌شوند
+- بدون نیاز به نصب نرم‌افزار
+- طراحی واکنش‌گرا برای موبایل و دسکتاپ
+- ساختار مناسب برای SEO
+
+## انتشار
+
+پروژه با GitHub Pages منتشر می‌شود و برای اجرای ابزارهای سمت کاربر به سرور اختصاصی نیاز ندارد.
+
+## وضعیت
+
+این نسخه شامل ۱۸ ابزار فعال است و قابلیت‌های اصلی به‌صورت client-side پیاده‌سازی شده‌اند.
