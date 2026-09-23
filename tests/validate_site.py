@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1]
 SITE="https://nabzkhabarofficial.github.io/nabz-tools/"
 TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi"]
+GUIDES=["word-counter-guide","qr-code-guide","image-compression-guide","image-to-pdf-guide"]
 errors=[]
 def fail(msg): errors.append(msg)
 def read(rel):
@@ -14,7 +15,7 @@ def read(rel):
  if not p.exists(): fail(f"missing file: {rel}"); return ""
  return p.read_text(encoding="utf-8")
 def count(pattern,text,flags=re.I): return len(re.findall(pattern,text,flags))
-pages=["index.html","about.html","privacy.html"]+[f"tools/{x}.html" for x in TOOLS]
+pages=["index.html","about.html","privacy.html"]+[f"tools/{x}.html" for x in TOOLS]+[f"guides/{x}.html" for x in GUIDES]
 for rel in ["index.html","style.css","robots.txt","sitemap.xml","about.html","privacy.html","404.html",".github/workflows/pages.yml","assets/qrcode.min.js"]:
  if not (ROOT/rel).exists(): fail(f"missing required file: {rel}")
 for rel in pages:
@@ -32,6 +33,12 @@ for rel in pages:
   if '"@type":"FAQPage"' not in html: fail("index.html: missing FAQPage JSON-LD")
   if 'id="faq"' not in html or '<details>' not in html: fail("index.html: visible FAQ section missing")
  elif rel.startswith("tools/"):
+  pass
+ elif rel.startswith("guides/"):
+  for token in ['property="og:title"','property="og:description"','property="og:url"','name="twitter:card"','"@type":"BreadcrumbList"']:
+   if token not in html: fail(f"{rel}: missing {token}")
+  if 'href="../style.css"' not in html: fail(f"{rel}: missing stylesheet")
+  if '<article' in html: pass
   for token in ['property="og:title"','property="og:description"','property="og:url"','name="twitter:card"','class="related-tools"','"@type":"BreadcrumbList"']:
    if token not in html: fail(f"{rel}: missing {token}")
   if 'href="../style.css"' not in html: fail(f"{rel}: missing stylesheet")
@@ -66,7 +73,7 @@ for rel in pages:
    if proc.returncode: fail(f"{rel}: JavaScript syntax error in inline script {i}: {proc.stderr.strip()}")
   finally: Path(tmp).unlink(missing_ok=True)
 sitemap=read("sitemap.xml"); robots=read("robots.txt"); locs=re.findall(r"<loc>(.*?)</loc>",sitemap,re.I|re.S)
-expected_urls=[SITE]+[SITE+f"tools/{x}.html" for x in TOOLS]+[SITE+"about.html",SITE+"privacy.html"]
+expected_urls=[SITE]+[SITE+f"tools/{x}.html" for x in TOOLS]+[SITE+"about.html",SITE+"privacy.html"]+[SITE+f"guides/{x}.html" for x in GUIDES]
 if len(locs)!=len(expected_urls) or set(locs)!=set(expected_urls): fail(f"sitemap.xml: expected {len(expected_urls)} exact URLs, found {len(locs)}")
 if f"Sitemap: {SITE}sitemap.xml" not in robots: fail("robots.txt: sitemap declaration missing")
 if not re.search(r"User-agent:\s*\*\s*\nAllow:\s*/",robots): fail("robots.txt: expected global Allow: /")
@@ -76,4 +83,4 @@ if errors:
  print("NABZ Tools validation FAILED")
  for e in errors: print(f"- {e}")
  sys.exit(1)
-print(f"NABZ Tools validation PASSED: {len(pages)} pages, {len(TOOLS)} tools, sitemap/robots, JSON-LD, FAQ, links, duplicate IDs, and inline JS syntax checked.")
+print(f"NABZ Tools validation PASSED: {len(pages)} pages, {len(TOOLS)} tools, {len(GUIDES)} guides, sitemap/robots, JSON-LD, FAQ, links, duplicate IDs, and inline JS syntax checked.")
