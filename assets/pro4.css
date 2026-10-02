@@ -1,0 +1,28 @@
+/* NABZ Tools pro4: shared bits for finance / Iran tools */
+.nz-note{font-size:12.5px;color:var(--muted);line-height:2;padding:14px 16px;border:1px dashed var(--line);border-radius:14px;margin:0 0 18px}
+.nz-meta{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:12.5px;margin:0 0 14px}
+.nz-meta b{color:var(--text)}
+.nz-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-left:5px}
+.nz-dot.old{background:#f59e0b}
+.mk-search input{display:block;width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--text);font-size:16px;outline:none;margin:0 0 12px}
+.mk-search input:focus{border-color:var(--primary);box-shadow:0 0 0 4px #4f46e51f}
+.mk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.mk-cap{grid-column:1/-1;font-weight:800;font-size:14.5px;margin:8px 0 0}
+.mk-tile{padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:var(--surface);min-width:0}
+.mk-tile small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-tile b{display:block;font-size:17px;margin-top:2px;overflow-wrap:anywhere}
+.mk-tile b i{font-style:normal;font-size:11.5px;color:var(--muted);font-weight:400;margin-right:3px}
+.mk-tile.hl{border-color:#a5b4fc;background:linear-gradient(135deg,#eef2ff,#f5f3ff)}
+.dark .mk-tile.hl{background:linear-gradient(135deg,#17163a,#1d1734);border-color:#3b3474}
+.nz-ok{color:#15803d}.nz-bad{color:#dc2626}
+.dark .nz-ok{color:#4ade80}.dark .nz-bad{color:#f87171}
+.nz-kv{width:100%;border-collapse:collapse;font-size:14px}
+.nz-kv td{padding:10px 12px;border-top:1px solid var(--line)}
+.nz-kv tr:first-child td{border-top:0}
+.nz-kv td:last-child{text-align:left;font-weight:700;white-space:nowrap}
+.nz-kv tr.tot td{font-weight:900;color:var(--primary)}
+.nz-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.nz-panel .muted{font-size:12.5px;margin:0}
+.ltr{direction:ltr;text-align:left;letter-spacing:.5px}
+@media(max-width:680px){.mk-grid{grid-template-columns:1fr 1fr;gap:8px}.mk-tile{padding:11px 12px}.mk-tile b{font-size:15px}.nz-two{grid-template-columns:1fr;gap:0}.nz-kv{font-size:13px}}
+@media(prefers-color-scheme:dark){body:not(.home):not(.light) .mk-tile.hl{background:linear-gradient(135deg,#17163a,#1d1734);border-color:#3b3474}}
