@@ -1,4 +1,4 @@
-/* NABZ Tools shared UI: theme, copy, toast, digit helpers */
+/* NABZ Tools shared UI: theme, copy, toast, digit helpers, visitor stats */
 (function(){
 var d=document,b=d.body,K='nabz-theme';
 function apply(m){b.classList.toggle('dark',m==='dark');b.classList.toggle('light',m==='light');var t=d.getElementById('themeToggle');if(t){t.textContent=m==='dark'?'☀':'☾';t.setAttribute('aria-pressed',m==='dark'?'true':'false')}}
@@ -15,4 +15,8 @@ function fa(v){return String(v).replace(/\d/g,function(c){return FA[c]})}
 function money(v,dec){if(!isFinite(v))return '—';return fa(Number(v).toLocaleString('en-US',{maximumFractionDigits:dec==null?0:dec}))}
 window.NZ={toast:toast,copy:copy,en:en,num:num,fa:fa,money:money};
 d.querySelectorAll('input[data-money]').forEach(function(i){i.addEventListener('input',function(){var raw=en(i.value).replace(/[^\d.]/g,'');if(!raw){i.value='';return}var p=raw.split('.');i.value=Number(p[0]).toLocaleString('en-US')+(p.length>1?'.'+p[1]:'')})});
+/* visitor stats (GoatCounter, cookie-free). open any page with #nostat once to exclude your own visits, #stat to undo */
+try{if(location.hash==='#nostat')localStorage.setItem('nz-nostat','1');else if(location.hash==='#stat')localStorage.removeItem('nz-nostat')}catch(e){}
+var ns=null;try{ns=localStorage.getItem('nz-nostat')}catch(e){}
+if(!ns&&!d.querySelector('script[data-goatcounter]')){var g=d.createElement('script');g.async=true;g.src='https://gc.zgo.at/count.js';g.setAttribute('data-goatcounter','https://nabztools.goatcounter.com/count');b.appendChild(g)}
 })();
