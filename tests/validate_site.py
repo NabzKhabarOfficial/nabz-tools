@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1]
 SITE="https://nabzkhabarofficial.github.io/nabz-tools/"
-TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi"]
+TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi","jalali-converter","number-to-words","digits-converter","loan-calculator","discount-vat","hash-generator"]
 GUIDES=["word-counter-guide","qr-code-guide","image-compression-guide","image-to-pdf-guide","percentage-guide","unit-converter-guide","image-resize-guide","image-converter-guide","json-format-guide","base64-guide","url-encoding-guide","password-generator-guide","timestamp-guide","age-calculator-guide"]
 errors=[]
 def fail(msg): errors.append(msg)
@@ -16,7 +16,7 @@ def read(rel):
  return p.read_text(encoding="utf-8")
 def count(pattern,text,flags=re.I): return len(re.findall(pattern,text,flags))
 pages=["index.html","about.html","privacy.html"]+[f"tools/{x}.html" for x in TOOLS]+["guides/index.html"]+[f"guides/{x}.html" for x in GUIDES]
-for rel in ["index.html","style.css","robots.txt","sitemap.xml","about.html","privacy.html","404.html",".github/workflows/pages.yml","assets/qrcode.min.js"]:
+for rel in ["index.html","style.css","robots.txt","sitemap.xml","about.html","privacy.html","404.html",".github/workflows/pages.yml","assets/qrcode.min.js","assets/nabz.js"]:
  if not (ROOT/rel).exists(): fail(f"missing required file: {rel}")
 for rel in pages:
  html=read(rel)
