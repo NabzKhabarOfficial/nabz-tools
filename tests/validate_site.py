@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1]
 SITE="https://nabzkhabarofficial.github.io/nabz-tools/"
-TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi","jalali-converter","number-to-words","digits-converter","loan-calculator","discount-vat","hash-generator","currency-converter","market-prices","gold-calculator","salary-calculator","deposit-interest","rent-converter","iran-validator"]
+TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi","jalali-converter","number-to-words","digits-converter","loan-calculator","discount-vat","hash-generator","currency-converter","market-prices","gold-calculator","salary-calculator","deposit-interest","rent-converter","iran-validator","coloring-page"]
 GUIDES=["word-counter-guide","qr-code-guide","image-compression-guide","image-to-pdf-guide","percentage-guide","unit-converter-guide","image-resize-guide","image-converter-guide","json-format-guide","base64-guide","url-encoding-guide","password-generator-guide","timestamp-guide","age-calculator-guide"]
 errors=[]
 def fail(msg): errors.append(msg)
