@@ -194,11 +194,15 @@ def main() -> int:
                 data["ref_usdt"], data["ref_ts"] = ref, tg_ts
         if tgju_is_stale(tg_ts) and ref:
             f = usdt / ref
-            if 0.85 <= f <= 1.15 and abs(f - 1) > 0.002:
+            if 0.85 <= f <= 1.15:
+                # tgju is closed (Friday/holiday): today's rate is checked against live tether.
+                # Prices move only when tether moved more than 0.2%, but the page always says the
+                # rate was checked today, instead of flagging a two-day-old tgju timestamp as stale.
                 data["usd_tgju"] = tg_usd
-                for c in list(market):
-                    if c != "usdt":
-                        market[c] = round(market[c] * f, -2)
+                if abs(f - 1) > 0.002:
+                    for c in list(market):
+                        if c != "usdt":
+                            market[c] = round(market[c] * f, -2)
                 data["usd_mode"] = "tether"
         data["market"] = market
     data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
