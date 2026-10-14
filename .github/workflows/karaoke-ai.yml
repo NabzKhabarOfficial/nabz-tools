@@ -1,0 +1,36 @@
+name: Karaoke AI models
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: karaoke-ai
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install tools
+        run: |
+          pip install "audio-separator[cpu]" soundfile numpy
+          npm install --no-save --prefix /tmp/ortnode onnxruntime-node@1.22.0
+      - name: Download, test and publish models
+        env:
+          NODE_PATH: /tmp/ortnode/node_modules
+        run: python scripts/ai_prepare.py
+      - name: Save models
+        run: |
+          git config user.name "nabz-ai-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add models
+          git commit -m "Karaoke AI models" || echo "nothing to commit"
+          git pull --rebase
+          git push
