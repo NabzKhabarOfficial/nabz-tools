@@ -21,7 +21,7 @@ jobs:
       - name: Install tools
         run: |
           pip install "audio-separator[cpu]" soundfile numpy
-          npm install --no-save --prefix /tmp/ortnode onnxruntime-node@1.22.0
+          npm install --no-save --prefix /tmp/ortnode onnxruntime-node@1.22.0 --onnxruntime-node-install=skip
       - name: Download, test and publish models
         env:
           NODE_PATH: /tmp/ortnode/node_modules
