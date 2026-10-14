@@ -1,19 +1,56 @@
 {
- "time": "2026-10-14 14:00:28",
+ "time": "2026-10-14 14:07:22",
+ "ffmpeg": "/usr/bin/ffmpeg",
  "models": [
   {
    "id": "kara2",
    "file_name": "UVR_MDXNET_KARA_2.onnx",
    "label": "سبک و سریع",
-   "error": "FileNotFoundError(2, 'No such file or directory')",
-   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/nabz-tools/nabz-tools/scripts/ai_prepare.py\", line 47, in <module>\n    sep = Separator(output_dir=out, model_file_dir=MDIR, output_format=\"WAV\",\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/audio_separator/separator/separator.py\", line 281, in __init__\n    self.setup_accelerated_inferencing_device()\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/audio_separator/separator/separator.py\", line 360, in setup_accelerated_inferencing_device\n    self.check_ffmpeg_installed()\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/audio_separator/separator/separator.py\", line 405, in check_ffmpeg_installed\n    ffmpeg_version_output = subprocess.check_output([\"ffmpeg\", \"-version\"], text=True)\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 466, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 548, in run\n    with Popen(*popenargs, **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 1955, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n"
+   "n_fft": 5120,
+   "dim_f": 2048,
+   "dim_t": 256,
+   "hop": 1024,
+   "compensate": 1.065,
+   "primary": "Instrumental",
+   "ref_files": [
+    "test_(Vocals)_UVR_MDXNET_KARA_2.wav",
+    "test_(Instrumental)_UVR_MDXNET_KARA_2.wav"
+   ],
+   "size": 52786726,
+   "node_log": "{\"chunks\":6,\"ms_per_chunk\":5515,\"total_ms\":37301,\"input\":\"input\",\"output\":\"output\"}",
+   "chunks": 6,
+   "ms_per_chunk": 5515,
+   "total_ms": 37301,
+   "input": "input",
+   "output": "output",
+   "match_snr_db": 64.48,
+   "inst_sdr_vs_truth_db": 12.34,
+   "ok": true
   },
   {
    "id": "hq3",
    "file_name": "UVR-MDX-NET-Inst_HQ_3.onnx",
    "label": "کیفیت بالا",
-   "error": "FileNotFoundError(2, 'No such file or directory')",
-   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/nabz-tools/nabz-tools/scripts/ai_prepare.py\", line 47, in <module>\n    sep = Separator(output_dir=out, model_file_dir=MDIR, output_format=\"WAV\",\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/audio_separator/separator/separator.py\", line 281, in __init__\n    self.setup_accelerated_inferencing_device()\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/audio_separator/separator/separator.py\", line 360, in setup_accelerated_inferencing_device\n    self.check_ffmpeg_installed()\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/audio_separator/separator/separator.py\", line 405, in check_ffmpeg_installed\n    ffmpeg_version_output = subprocess.check_output([\"ffmpeg\", \"-version\"], text=True)\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 466, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 548, in run\n    with Popen(*popenargs, **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py\", line 1955, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n"
+   "n_fft": 6144,
+   "dim_f": 3072,
+   "dim_t": 256,
+   "hop": 1024,
+   "compensate": 1.022,
+   "primary": "Instrumental",
+   "ref_files": [
+    "test_(Vocals)_UVR-MDX-NET-Inst_HQ_3.wav",
+    "test_(Instrumental)_UVR-MDX-NET-Inst_HQ_3.wav"
+   ],
+   "size": 66759214,
+   "node_log": "{\"chunks\":6,\"ms_per_chunk\":8852,\"total_ms\":57303,\"input\":\"input\",\"output\":\"output\"}",
+   "chunks": 6,
+   "ms_per_chunk": 8852,
+   "total_ms": 57303,
+   "input": "input",
+   "output": "output",
+   "match_snr_db": 64.87,
+   "inst_sdr_vs_truth_db": 14.31,
+   "ok": true
   }
  ]
 }
