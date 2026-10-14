@@ -4,7 +4,21 @@
 2) separates a test song with audio-separator (reference) AND with our browser code (assets/karaoke-ai.js via Node)
 3) only models where our code matches the reference are published to models/ + models/karaoke-ai.json
 Report: models/ai_report.json"""
-import json, os, shutil, subprocess, time, traceback
+import json, os, shutil, subprocess, sys, time, traceback
+
+# audio-separator needs ffmpeg; newer GitHub runners no longer ship it
+if not shutil.which("ffmpeg"):
+    print("ffmpeg missing, installing...", flush=True)
+    ok = subprocess.run("sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg", shell=True).returncode == 0
+    if not ok or not shutil.which("ffmpeg"):
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "imageio-ffmpeg"], check=True)
+        import imageio_ffmpeg
+        bindir = "/tmp/ffbin"; os.makedirs(bindir, exist_ok=True)
+        dst = os.path.join(bindir, "ffmpeg")
+        if not os.path.exists(dst): os.symlink(imageio_ffmpeg.get_ffmpeg_exe(), dst)
+        os.environ["PATH"] = bindir + os.pathsep + os.environ.get("PATH", "")
+    print("ffmpeg:", shutil.which("ffmpeg"), flush=True)
+
 import numpy as np, soundfile as sf
 from audio_separator.separator import Separator
 
@@ -38,7 +52,7 @@ def si_snr(est, ref):
     a = np.dot(est, ref) / (np.dot(ref, ref) + 1e-12); e = est - a * ref
     return float(10 * np.log10(np.sum((a * ref) ** 2) / (np.sum(e ** 2) + 1e-12)))
 
-report = {"time": time.strftime("%Y-%m-%d %H:%M:%S"), "models": []}
+report = {"time": time.strftime("%Y-%m-%d %H:%M:%S"), "ffmpeg": shutil.which("ffmpeg"), "models": []}
 published = []
 for mid, fname, label in MODELS:
     info = {"id": mid, "file_name": fname, "label": label}
@@ -76,10 +90,12 @@ for mid, fname, label in MODELS:
     except Exception as e:
         info["error"] = repr(e); info["trace"] = traceback.format_exc()[-2000:]
     report["models"].append(info)
-    print(json.dumps({k: v for k, v in info.items() if k not in ("node_log", "trace")}, ensure_ascii=False))
+    print(json.dumps({k: v for k, v in info.items() if k not in ("node_log", "trace")}, ensure_ascii=False), flush=True)
 
 json.dump(report, open("models/ai_report.json", "w"), ensure_ascii=False, indent=1)
 if published:
     published.sort(key=lambda x: x["size"])
     json.dump({"version": int(time.time()), "default": published[0]["id"], "models": published}, open("models/karaoke-ai.json", "w"), ensure_ascii=False, indent=1)
-print("published:", [p["id"] for p in published])
+    print("published:", [p["id"] for p in published])
+else:
+    print("::warning::No model passed the test, nothing published. See models/ai_report.json")
