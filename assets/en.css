@@ -1,0 +1,26 @@
+/* NABZ Tools English (LTR) overrides on top of style.css / home.css (which are written for RTL) */
+[dir=ltr] body{font-family:Vazirmatn,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.lang-link{display:inline-flex;align-items:center;height:38px;padding:0 12px;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-weight:800;font-size:13px;white-space:nowrap}
+.lang-link:hover{border-color:var(--primary);color:var(--primary)}
+.home .nav-actions .lang-link{background:#ffffff14;border-color:#ffffff33;color:#fff}
+.home .nav-actions .lang-link:hover{background:#ffffff26;color:#fff}
+[dir=ltr] .tool-page > .seo-intro{border-right:1px solid #d9e2f1;border-left:4px solid var(--primary)}
+[dir=ltr].dark .tool-page > .seo-intro,.dark [dir=ltr] .tool-page > .seo-intro{border-right-color:var(--line)}
+[dir=ltr] .tool-page .related-tools h2::after{content:"Handy tools for your next step";right:auto;left:0}
+[dir=ltr] .tool-page .related-tool{padding:18px 18px 18px 50px}
+[dir=ltr] .tool-page .related-tool::before{right:auto;left:14px}
+[dir=ltr] .tool-page > button:not(.btn){margin:2px 7px 14px 0}
+[dir=ltr] .nz-result strong,[dir=ltr] .nz-out{padding-left:0;padding-right:70px}
+[dir=ltr] .nz-copy{left:auto;right:14px}
+[dir=ltr] .nz-hash code{padding-left:0;padding-right:66px}
+[dir=ltr] .tool-card input[type=checkbox],[dir=ltr] .tool-card input[type=radio]{margin:0 7px 0 0}
+[dir=ltr] .big-search input{padding:16px 66px 16px 52px}
+[dir=ltr] .big-search .ic{right:auto;left:18px}
+[dir=ltr] .big-search kbd{left:auto;right:14px}
+[dir=ltr] .cat small{margin-right:0;margin-left:4px}
+[dir=ltr] .card-arrow{left:auto;right:18px}
+[dir=ltr] .card h3{padding-left:0}
+[dir=ltr] .guide-lead{border-right:0;border-left:4px solid var(--primary)}
+[dir=ltr] .guide-section ol{padding-right:0;padding-left:24px}
+.tool-page label input[type=checkbox]{width:auto;display:inline-block;margin:0 8px 0 0;vertical-align:middle}
+@media(max-width:680px){[dir=ltr] .big-search input{padding:14px 14px 14px 46px}[dir=ltr] .big-search .ic{left:15px}[dir=ltr] .tool-page .related-tools h2::after{margin:3px 0 0 41px}[dir=ltr] .tool-page .related-tool{padding:14px 15px 14px 50px}[dir=ltr] .tool-page .related-tool::before{left:13px}.lang-link{height:42px}}
