@@ -1,10 +1,10 @@
 # NABZ Tools
 
-مجموعه‌ی ۳۱ ابزار آنلاین رایگان و سبک برای استفاده‌ی روزمره، با تمرکز روی کاربر ایرانی.
+مجموعه‌ی ۳۳ ابزار آنلاین رایگان و سبک برای استفاده‌ی روزمره، با تمرکز روی کاربر ایرانی.
 
 🌐 سایت: https://nabzkhabarofficial.github.io/nabz-tools/
 
-## ابزارها (۳۱)
+## ابزارها (۳۳)
 
 ### 💵 مالی، ارز و طلا
 - تبدیل ارز با نرخ روز (ارز جهانی، رمزارز، سکه و تومان بازار آزاد) — `currency-converter`
@@ -33,12 +33,14 @@
 - Hash و UUID — `hash-generator`
 - مبدل رنگ HEX / RGB — `color-converter`
 
-### 🖼️ تصویر و فایل
+### 🖼️ تصویر، صدا و فایل
 - فشرده‌سازی تصویر — `image-compressor`
 - تغییر اندازه تصویر — `image-resizer`
 - تبدیل JPG / PNG / WebP — `image-converter`
 - تبدیل چند تصویر به PDF — `pdf-tools`
 - ساخت QR Code — `qr-generator`
+- عکس به نقاشی رنگ‌آمیزی — `coloring-page`
+- ساخت کارائوکه (حذف صدای خواننده با هوش مصنوعی یا روش کلاسیک) — `karaoke-maker`
 
 ### 🧮 محاسبه و زمان
 - تبدیل واحد — `unit-converter`
@@ -54,15 +56,17 @@
 - `index.html` صفحه اصلی و جستجوی ابزارها
 - `tools/` صفحه‌ی هر ابزار
 - `guides/` راهنماها
-- `assets/` اسکریپت‌ها و استایل‌های مشترک (`nabz.js` شامل سوییچر ابزارها با Ctrl+K)
+- `assets/` اسکریپت‌ها و استایل‌های مشترک (`nabz.js` شامل سوییچر ابزارها با Ctrl+K، `karaoke-ai.js` موتور جداسازی صدای کارائوکه)
+- `models/` مدل‌های هوش مصنوعی کارائوکه (`karaoke-ai.json` تنظیمات، `ai_report.json` گزارش تست)
 - `data/rates.json` نرخ ارز، طلا و سکه
 - `sitemap.xml` و `robots.txt` برای سئو
 
 ## خودکارسازی
 
 - `.github/workflows/rates.yml` هر دو ساعت نرخ‌ها را از منابع عمومی به‌روز می‌کند (روزهای تعطیل با قیمت تتر تنظیم می‌شود).
-- `.github/workflows/validate.yml` قبل از انتشار، کل سایت را با `tests/validate_site.py` بررسی می‌کند: وجود ۳۱ ابزار، لینک‌ها، متا تگ‌ها، canonical، JSON-LD، شناسه‌های تکراری، سینتکس جاوااسکریپت و تطابق دقیق sitemap.
+- `.github/workflows/validate.yml` قبل از انتشار، کل سایت را با `tests/validate_site.py` بررسی می‌کند.
 - `.github/workflows/pages.yml` سایت را روی GitHub Pages منتشر می‌کند.
+- `.github/workflows/karaoke-ai.yml` (اجرای دستی) مدل‌های کارائوکه را دانلود، با برنامه مرجع مقایسه و فقط مدل‌های درست را منتشر می‌کند (`scripts/ai_prepare.py`). بعد از اجرای آن، یک پوش معمولی لازم است تا سایت دوباره منتشر شود.
 
 اجرای محلی اعتبارسنجی (نیاز به Python 3 و Node.js):
 
