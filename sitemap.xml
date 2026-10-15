@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/</loc><lastmod>2026-10-16</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/word-counter.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/percentage.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/unit-converter.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -12,6 +12,7 @@
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/json-formatter.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/base64.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/url-encoder.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/link-shortener.html</loc><lastmod>2026-10-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/password-generator.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/text-case.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/color-converter.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -35,7 +36,7 @@
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/coloring-page.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/tools/karaoke-maker.html</loc><lastmod>2026-10-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/about.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/privacy.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/privacy.html</loc><lastmod>2026-10-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/guides/</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/guides/word-counter-guide.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/guides/qr-code-guide.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -51,7 +52,7 @@
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/guides/password-generator-guide.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/guides/timestamp-guide.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/guides/age-calculator-guide.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/currency-converter.html</loc><lastmod>2026-10-15</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/loan-calculator.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/deposit-interest.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -63,6 +64,7 @@
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/hash-generator.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/base64.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/url-encoder.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/link-shortener.html</loc><lastmod>2026-10-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/text-case.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/color-converter.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/qr-generator.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -76,7 +78,7 @@
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/date-difference.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/bmi.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/about.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/privacy.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/privacy.html</loc><lastmod>2026-10-16</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/market-prices.html</loc><lastmod>2026-10-15</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/gold-calculator.html</loc><lastmod>2026-10-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://nabzkhabarofficial.github.io/nabz-tools/en/tools/salary-calculator.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
