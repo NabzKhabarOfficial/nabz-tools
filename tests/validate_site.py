@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1]
 SITE="https://nabzkhabarofficial.github.io/nabz-tools/"
-TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi","jalali-converter","number-to-words","digits-converter","loan-calculator","discount-vat","hash-generator","currency-converter","market-prices","gold-calculator","salary-calculator","deposit-interest","rent-converter","iran-validator","coloring-page","karaoke-maker"]
+TOOLS=["word-counter","percentage","unit-converter","qr-generator","image-compressor","image-resizer","image-converter","pdf-tools","json-formatter","base64","url-encoder","password-generator","text-case","color-converter","timestamp","age-calculator","date-difference","bmi","jalali-converter","number-to-words","digits-converter","loan-calculator","discount-vat","hash-generator","currency-converter","market-prices","gold-calculator","salary-calculator","deposit-interest","rent-converter","iran-validator","coloring-page","karaoke-maker","link-shortener"]
 GUIDES=["word-counter-guide","qr-code-guide","image-compression-guide","image-to-pdf-guide","percentage-guide","unit-converter-guide","image-resize-guide","image-converter-guide","json-format-guide","base64-guide","url-encoding-guide","password-generator-guide","timestamp-guide","age-calculator-guide"]
 # English section (Oct 2026): en/index.html, en/about.html, en/privacy.html, en/tools/<slug>.html
 EN_TOOLS=list(TOOLS)  # every tool has an English page (Oct 15 2026)
