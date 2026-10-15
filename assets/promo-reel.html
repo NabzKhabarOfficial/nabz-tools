@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NABZ Tools | سازنده ویدئو و ریلز تبلیغاتی نبض تولز</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body {
+    background: #070d18;
+    color: #eef4ff;
+    font-family: Vazirmatn, Tahoma, "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .promo-wrap {
+    max-width: 1120px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 28px;
+    align-items: start;
+    margin-top: 12px;
+  }
+  @media (max-width: 860px) {
+    .promo-wrap { grid-template-columns: 1fr; }
+  }
+  .stage-box {
+    background: #101a2b;
+    border: 1px solid #26344b;
+    border-radius: 26px;
+    padding: 16px;
+    box-shadow: 0 22px 60px rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  canvas {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 9 / 16;
+    border-radius: 18px;
+    background: #07111f;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+    display: block;
+  }
+  .controls {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .btn-p {
+    flex: 1;
+    min-width: 130px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    border: 0;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 800;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(79,70,229,0.4);
+    transition: transform .15s, filter .15s;
+  }
+  .btn-p:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .btn-p.secondary {
+    background: #172338;
+    border: 1px solid #2f4263;
+    box-shadow: none;
+    color: #dbeafe;
+  }
+  .btn-p:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+  .info-panel {
+    background: #101a2b;
+    border: 1px solid #26344b;
+    border-radius: 26px;
+    padding: 26px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+  }
+  .info-panel h1 {
+    margin: 0 0 8px;
+    font-size: 26px;
+    background: linear-gradient(135deg, #fff 30%, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .info-panel p.lead {
+    margin: 0 0 20px;
+    color: #9aabc2;
+    font-size: 14.5px;
+    line-height: 1.9;
+  }
+  .scene-list {
+    display: grid;
+    gap: 11px;
+    margin-bottom: 22px;
+  }
+  .scene-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    border-radius: 16px;
+    background: #162238;
+    border: 1px solid #253552;
+    cursor: pointer;
+    transition: border-color .18s, background .18s;
+  }
+  .scene-item:hover, .scene-item.active {
+    border-color: #7c3aed;
+    background: #1d2846;
+  }
+  .scene-item strong { font-size: 14.5px; color: #fff; display: block; }
+  .scene-item span { font-size: 12.5px; color: #9aabc2; }
+  .scene-item em {
+    font-style: normal;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(124,58,237,0.22);
+    color: #c4b5fd;
+    font-weight: 700;
+  }
+  .status-bar {
+    margin-top: 12px;
+    padding: 12px 15px;
+    border-radius: 13px;
+    background: #0b1322;
+    border: 1px solid #26344b;
+    color: #93c5fd;
+    font-size: 13.5px;
+    width: 100%;
+    text-align: center;
+  }
+  .caption-box {
+    background: #0b1322;
+    border: 1px solid #26344b;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 14px;
+  }
+  .caption-box h3 { margin: 0 0 8px; font-size: 15px; color: #a78bfa; }
+  .caption-box pre {
+    margin: 0;
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.95;
+    color: #dbeafe;
+  }
+</style>
+</head>
+<body>
+
+<div class="promo-wrap">
+  <div class="stage-box">
+    <canvas id="reelCanvas" width="1080" height="1920"></canvas>
+    <div class="controls">
+      <button id="playBtn" class="btn-p" type="button">▶ پخش با موزیک</button>
+      <button id="recBtn" class="btn-p secondary" type="button">⬇ دانلود فایل ویدئو (۱۰۸۰×۱۹۲۰)</button>
+    </div>
+    <div id="statusText" class="status-bar">آماده پخش • کیفیت ۱۰۸۰×۱۹۲۰ (مخصوص ریلز و شورتز)</div>
+  </div>
+
+  <div class="info-panel">
+    <h1>ریلز تبلیغاتی رسمی «نبض تولز»</h1>
+    <p class="lead">این انیمیشن ۲۴ ثانیه‌ای با ابعاد استاندارد 9:16 (۱۰۸۰×۱۹۲۰) تمام ۵ بخش اصلی و ۳۳ ابزار رایگان نبض تولز را به همراه موزیک سینت‌ویو اختصاصی معرفی می‌کند. روی هر سکانس بزن تا مستقیم ببینی یا دکمه دانلود ویدئو را بزن.</p>
+
+    <div class="scene-list" id="sceneList">
+      <div class="scene-item active" data-time="0">
+        <div>
+          <strong>۱. قلاب شروع + معرفی نبض تولز</strong>
+          <span>چرا ده تا سایت باز می‌کنی؟ ۳۳ ابزار رایگان در یک صفحه + جستجوی سریع</span>
+        </div>
+        <em>۰ تا ۳.۶ ثانیه</em>
+      </div>
+      <div class="scene-item" data-time="3.6">
+        <div>
+          <strong>۲. بخش اول: مالی، ارز، طلا و دستمزد (۹ ابزار)</strong>
+          <span>نرخ لحظه‌ای دلار و سکه، محاسبه قیمت فاکتور طلا، حقوق ۱۴۰۵، وام و سپرده</span>
+        </div>
+        <em>۳.۶ تا ۷.۸ ثانیه</em>
+      </div>
+      <div class="scene-item" data-time="7.8">
+        <div>
+          <strong>۳. بخش دوم: مخصوص ایران و فارسی (۴ ابزار)</strong>
+          <span>اعتبارسنجی کد ملی، کارت و شبا (تشخیص بانک)، تاریخ شمسی، عدد به حروف و ارقام</span>
+        </div>
+        <em>۷.۸ تا ۱۱.۸ ثانیه</em>
+      </div>
+      <div class="scene-item" data-time="11.8">
+        <div>
+          <strong>۴. بخش سوم: تصویر، صدا، فایل و هوش مصنوعی (۷ ابزار)</strong>
+          <span>ساخت کارائوکه (حذف صدای خواننده)، عکس به نقاشی کودک، کاهش حجم عکس، PDF و QR</span>
+        </div>
+        <em>۱۱.۸ تا ۱۵.۸ ثانیه</em>
+      </div>
+      <div class="scene-item" data-time="15.8">
+        <div>
+          <strong>۵. بخش چهارم و پنجم: متن، کدنویسی و محاسبات (۱۳ ابزار)</strong>
+          <span>شمارشگر کلمات، فرمت JSON، تولید رمز امن، محاسبه سن دقیق، اختلاف تاریخ و BMI</span>
+        </div>
+        <em>۱۵.۸ تا ۱۹.۶ ثانیه</em>
+      </div>
+      <div class="scene-item" data-time="19.6">
+        <div>
+          <strong>۶. جمع‌بندی و دعوت به اقدام (CTA)</strong>
+          <span>۱۰۰٪ رایگان، پردازش امن داخل مرورگر، بدون نصب و ثبت‌نام + آدرس سایت</span>
+        </div>
+        <em>۱۹.۶ تا ۲۴ ثانیه</em>
+      </div>
+    </div>
+
+    <div class="caption-box">
+      <h3>کپشن پیشنهادی آماده برای پست ریلز:</h3>
+      <pre id="capText">چرا برای هر کار ساده روزمره ده تا سایت و برنامه مختلف باز می‌کنی؟ 🚀
+توی «نبض تولز» ۳۳ ابزار آنلاین، رایگان و کاربردی رو یکجا و بدون نیاز به نصب یا ثبت‌نام داری:
+
+💵 مالی، ارز و طلا (۹ ابزار):
+• نرخ لحظه‌ای دلار، طلا، سکه و تتر + تبدیل ارز
+• محاسبه دقیق فاکتور طلا (اجرت، سود و مالیات)
+• محاسبه حقوق و مالیات پلکانی ۱۴۰۵
+• محاسبه قسط وام، سود سپرده و تبدیل رهن و اجاره
+
+🇮🇷 مخصوص ایران و فارسی (۴ ابزار):
+• بررسی صحت کد ملی، شماره کارت و شبا + تشخیص نام بانک
+• تبدیل تاریخ شمسی، میلادی و قمری
+• تبدیل عدد به حروف (مخصوص چک و فاکتور) و اصلاح ی/ک
+
+🖼️ تصویر، صدا و هوش مصنوعی (۷ ابزار):
+• ساخت کارائوکه و حذف صدای خواننده با هوش مصنوعی 🎤
+• تبدیل هر عکسی به نقاشی خطی رنگ‌آمیزی برای بچه‌ها 🖍️
+• کاهش حجم عکس، تغییر سایز، تبدیل عکس به PDF و ساخت QR Code
+
+✍️ متن، کدنویسی و محاسبات (۱۳ ابزار):
+• شمارشگر کلمات، رمزساز امن، فرمت JSON، محاسبه سن دقیق، فاصله دو تاریخ و BMI
+
+🔒 مهم‌تر از همه: تمام پردازش‌ها مستقیم داخل مرورگر خودت انجام می‌شه و هیچ عکس، فایل یا اطلاعات بانکی به سرور ارسال نمی‌شه!
+
+🔗 لینک مستقیم در بیو پیج:
+nabzkhabarofficial.github.io/nabz-tools
+
+📌 این ریلز رو حتماً ذخیره (Save) کن که موقع نیاز دم دستت باشه و برای دوستات بفرست! کدوم ابزارش بیشتر به کارت میاد؟ توی کامنت بنویس 👇</pre>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('reelCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1080, H = 1920, DURATION = 24.0;
+  let playing = false;
+  let startTime = 0;
+  let currentTime = 0;
+  let animId = null;
+  let audioCtx = null;
+  let audioDest = null;
+
+  const toFaDigits = s => String(s).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+  const easeOutCubic = x => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 3);
+  const easeOutBack = x => {
+    x = Math.max(0, Math.min(1, x));
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+  };
+
+  function roundRect(x, y, w, h, r, fillStyle, strokeStyle, lineWidth=2) {
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, r);
+    if (fillStyle) { ctx.fillStyle = fillStyle; ctx.fill(); }
+    if (strokeStyle) { ctx.strokeStyle = strokeStyle; ctx.lineWidth = lineWidth; ctx.stroke(); }
+  }
+
+  function drawFa(text, x, y, size, color='#ffffff', weight='800', align='center') {
+    ctx.save();
+    ctx.direction = 'rtl';
+    ctx.textAlign = align;
+    ctx.textBaseline = 'middle';
+    ctx.font = `${weight} ${size}px Vazirmatn, Tahoma, Arial, sans-serif`;
+    ctx.fillStyle = color;
+    ctx.fillText(text, x, y);
+    ctx.restore();
+  }
+
+  function drawEn(text, x, y, size, color='#ffffff', mono=false, align='center') {
+    ctx.save();
+    ctx.direction = 'ltr';
+    ctx.textAlign = align;
+    ctx.textBaseline = 'middle';
+    ctx.font = `800 ${size}px ${mono ? 'ui-monospace, Consolas, monospace' : 'Vazirmatn, Arial, sans-serif'}`;
+    ctx.fillStyle = color;
+    ctx.fillText(text, x, y);
+    ctx.restore();
+  }
+
+  function drawBackground(t) {
+    const grad = ctx.createLinearGradient(0, 0, W, H);
+    grad.addColorStop(0, '#07111f');
+    grad.addColorStop(0.5, '#0e1b33');
+    grad.addColorStop(1, '#17143a');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Moving glowing aurora orbs
+    const cx1 = W * (0.5 + 0.28 * Math.sin(t * 0.7));
+    const cy1 = H * (0.28 + 0.12 * Math.cos(t * 0.5));
+    const g1 = ctx.createRadialGradient(cx1, cy1, 20, cx1, cy1, 560);
+    g1.addColorStop(0, 'rgba(124, 58, 237, 0.34)');
+    g1.addColorStop(1, 'rgba(124, 58, 237, 0)');
+    ctx.fillStyle = g1;
+    ctx.fillRect(0, 0, W, H);
+
+    const cx2 = W * (0.5 - 0.25 * Math.cos(t * 0.6));
+    const cy2 = H * (0.72 + 0.12 * Math.sin(t * 0.8));
+    const g2 = ctx.createRadialGradient(cx2, cy2, 20, cx2, cy2, 600);
+    g2.addColorStop(0, 'rgba(56, 189, 248, 0.26)');
+    g2.addColorStop(1, 'rgba(56, 189, 248, 0)');
+    ctx.fillStyle = g2;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle moving grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.035)';
+    ctx.lineWidth = 1;
+    const offY = (t * 45) % 160;
+    for (let x = 90; x < W; x += 160) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for (let y = offY; y < H; y += 160) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+  }
+
+  function drawTopBar(t) {
+    const prog = Math.min(1, t / DURATION);
+    roundRect(60, 48, W - 120, 10, 5, 'rgba(255,255,255,0.14)', null);
+    roundRect(60, 48, Math.max(12, (W - 120) * prog), 10, 5, '#a78bfa', null);
+
+    roundRect(60, 80, 290, 66, 33, 'rgba(16,26,45,0.85)', 'rgba(124,58,237,0.65)', 2.5);
+    const pr = 7 + 3 * Math.sin(t * 6);
+    ctx.beginPath();
+    ctx.arc(98, 113, pr, 0, Math.PI * 2);
+    ctx.fillStyle = '#38bdf8';
+    ctx.fill();
+    drawEn('NABZ Tools', 218, 114, 29, '#ffffff');
+
+    roundRect(W - 400, 80, 340, 66, 33, 'rgba(16,26,45,0.85)', 'rgba(255,255,255,0.2)', 2);
+    drawFa('۳۳ ابزار آنلاین رایگان', W - 230, 114, 25, '#dbeafe', '800');
+  }
+
+  function drawIcon(cx, cy, r, emoji, rgb, alpha, t) {
+    roundRect(cx - r, cy - r, r * 2, r * 2, r * 0.36, `rgba(${rgb},${0.18 * alpha})`, `rgba(${rgb},${0.8 * alpha})`, 3);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.font = `${Math.round(r * 0.95)}px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(emoji, cx, cy + 4);
+    ctx.restore();
+  }
+
+  function drawCard(x, y, w, h, title, sub, badge, emoji, rgb, t, alpha) {
+    if (alpha <= 0.02) return;
+    ctx.save();
+    roundRect(x, y, w, h, 34, `rgba(16,26,44,${0.9 * alpha})`, `rgba(${rgb},${0.75 * alpha})`, 3);
+    roundRect(x + w - 12, y + 26, 8, h - 52, 4, `rgba(${rgb},${alpha})`, null);
+
+    const icX = x + w - 96;
+    const icY = y + h / 2;
+    drawIcon(icX, icY, 54, emoji, rgb, alpha, t);
+
+    const txRight = icX - 78;
+    drawFa(title, txRight, y + h / 2 - 26, 36, `rgba(255,255,255,${alpha})`, '800', 'right');
+    drawFa(sub, txRight, y + h / 2 + 30, 25, `rgba(180,198,228,${alpha})`, '500', 'right');
+
+    if (badge) {
+      const bw = 172, bh = 52;
+      const bx = x + 34, by = y + (h - bh) / 2;
+      roundRect(bx, by, bw, bh, 26, `rgba(${rgb},${0.22 * alpha})`, `rgba(${rgb},${0.85 * alpha})`, 2);
+      drawFa(badge, bx + bw / 2, by + bh / 2, 22, `rgba(255,255,255,${alpha})`, '800', 'center');
+    }
+    ctx.restore();
+  }
+
+  function renderScene1(t) {
+    const p = easeOutCubic(Math.min(1, t / 0.7));
+    const yShift = (1 - p) * 70;
+    const cx = W / 2, cy = 530 + yShift;
+
+    [230, 175, 125].forEach((r, idx) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(139,92,246,${0.18 + idx * 0.14})`;
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+    });
+
+    const nodes = [
+      ['📈 دلار و طلا', '52,211,153'],
+      ['💼 حقوق ۱۴۰۵', '96,165,250'],
+      ['🎤 کارائوکه', '192,132,252'],
+      ['🪪 کد ملی و شبا', '251,191,36'],
+      ['🖼️ تبدیل عکس', '244,114,182'],
+      ['📆 تاریخ شمسی', '56,189,248']
+    ];
+    nodes.forEach((n, i) => {
+      const ang = t * 0.9 + i * (Math.PI * 2 / nodes.length);
+      const nx = cx + Math.cos(ang) * 230;
+      const ny = cy + Math.sin(ang) * 230;
+      roundRect(nx - 96, ny - 28, 192, 56, 28, 'rgba(14,24,42,0.92)', `rgba(${n[1]},0.85)`, 2.5);
+      drawFa(n[0], nx, ny, 23, '#ffffff', '800');
+    });
+
+    roundRect(cx - 98, cy - 98, 196, 196, 44, 'rgba(79,70,229,0.95)', '#c4b5fd', 4);
+    const cnt = Math.min(33, Math.max(1, Math.floor((t / 1.0) * 33)));
+    drawFa(toFaDigits(cnt), cx, cy - 14, 76, '#ffffff', '900');
+    drawFa('ابزار رایگان', cx, cy + 52, 25, '#e0e7ff', '800');
+
+    drawFa('چرا برای هر کار ساده روزمره', W / 2, 915 + yShift, 48, '#c4b5fd', '800');
+    drawFa('ده تا سایت و برنامه باز می‌کنی؟', W / 2, 1000 + yShift, 54, '#ffffff', '900');
+
+    const sbY = 1120 + yShift;
+    roundRect(85, sbY, W - 170, 110, 32, 'rgba(16,28,48,0.94)', 'rgba(96,165,250,0.85)', 3);
+    const q = '🔍 جستجو: قیمت دلار، حقوق ۱۴۰۵، کارائوکه...';
+    const chars = Math.min(q.length, Math.max(0, Math.floor((t - 0.35) * 22)));
+    drawFa(q.slice(0, chars), W - 135, sbY + 55, 30, '#e2e8f0', '700', 'right');
+    roundRect(115, sbY + 22, 125, 66, 20, '#4f46e5', null);
+    drawEn('Ctrl+K', 177, sbY + 55, 24, '#ffffff', true);
+
+    if (t > 0.75) {
+      const tp = easeOutCubic(Math.min(1, (t - 0.75) / 0.5));
+      const ty = 1325 + (1 - tp) * 40;
+      const pills = [
+        ['⚡ بدون نیاز به نصب و ثبت‌نام', '52,211,153'],
+        ['🔒 پردازش ۱۰۰٪ امن داخل مرورگر', '56,189,248'],
+        ['💯 کاملاً رایگان برای موبایل و دسکتاپ', '167,139,250']
+      ];
+      pills.forEach((pl, idx) => {
+        const by = ty + idx * 105;
+        roundRect(130, by, W - 260, 84, 26, `rgba(15,25,42,${0.88 * tp})`, `rgba(${pl[1]},${0.75 * tp})`, 2.5);
+        drawFa(pl[0], W / 2, by + 42, 31, `rgba(255,255,255,${tp})`, '800');
+      });
+    }
+  }
+
+  function renderCategory(t, lt, pillText, title, sub, rgb, cards, footerText) {
+    const hp = easeOutCubic(Math.min(1, lt / 0.45));
+    const hy = 215 + (1 - hp) * -35;
+
+    roundRect(W / 2 - 230, hy, 460, 64, 32, `rgba(${rgb},0.2)`, `rgba(${rgb},0.85)`, 2.5);
+    drawFa(pillText, W / 2, hy + 32, 26, '#ffffff', '800');
+
+    drawFa(title, W / 2, hy + 132, 56, '#ffffff', '900');
+    drawFa(sub, W / 2, hy + 210, 30, '#bed0eb', '600');
+
+    const baseY = 505, cardH = 225, gap = 34;
+    cards.forEach((c, i) => {
+      const st = 0.18 + i * 0.2;
+      const cp = easeOutBack(Math.min(1, Math.max(0, (lt - st) / 0.52)));
+      const alpha = Math.min(1, Math.max(0, (lt - st) / 0.35));
+      const xShift = (1 - cp) * 130;
+      const cy = baseY + i * (cardH + gap);
+      drawCard(75 + xShift, cy, W - 150, cardH, c[0], c[1], c[2], c[3], c[4], t, alpha);
+    });
+
+    if (lt > 1.05) {
+      const bp = easeOutCubic(Math.min(1, (lt - 1.05) / 0.45));
+      const by = 1560 + (1 - bp) * 45;
+      roundRect(90, by, W - 180, 110, 30, `rgba(${rgb},${0.18 * bp})`, `rgba(${rgb},${0.85 * bp})`, 3);
+      drawFa(footerText, W / 2, by + 55, 31, `rgba(255,255,255,${bp})`, '800');
+    }
+  }
+
+  function renderScene6(t, lt) {
+    const cx = W / 2, cy = 355;
+    const pr = 112 + 10 * Math.sin(t * 5);
+    ctx.beginPath();
+    ctx.arc(cx, cy, pr, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(124,58,237,0.24)';
+    ctx.fill();
+    ctx.strokeStyle = '#a78bfa';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    roundRect(cx - 88, cy - 88, 176, 176, 38, '#4f46e5', '#ffffff', 3);
+    drawEn('NABZ', cx, cy - 14, 46, '#ffffff');
+    drawEn('TOOLS', cx, cy + 36, 28, '#c4b5fd');
+
+    drawFa('نبض تولز؛ جعبه ابزار آنلاین تو', W / 2, 540, 54, '#ffffff', '900');
+    drawFa('۳۳ ابزار کاربردی + ۱۴ راهنمای آموزشی فارسی', W / 2, 620, 32, '#a7f3d0', '800');
+
+    const feats = [
+      ['💯 ۱۰۰٪ رایگان', 'بدون اشتراک و هزینه', '52,211,153'],
+      ['🔒 حریم خصوصی کامل', 'پردازش داخل مرورگر', '56,189,248'],
+      ['⚡ بدون نصب و ثبت‌نام', 'اجرای فوری با یک کلیک', '167,139,250'],
+      ['📱 موبایل و دسکتاپ', 'طراحی سریع و واکنش‌گرا', '251,191,36']
+    ];
+    const gw = 445, gh = 205;
+    feats.forEach((f, idx) => {
+      const row = Math.floor(idx / 2), col = idx % 2;
+      const st = 0.22 + idx * 0.12;
+      const fp = easeOutBack(Math.min(1, Math.max(0, (lt - st) / 0.45)));
+      if (fp <= 0.05) return;
+      const gx = 75 + col * (gw + 40);
+      const gy = 705 + row * (gh + 32) + (1 - fp) * 40;
+      roundRect(gx, gy, gw, gh, 28, 'rgba(16,26,45,0.92)', `rgba(${f[2]},0.85)`, 3);
+      drawFa(f[0], gx + gw / 2, gy + 72, 34, '#ffffff', '800');
+      drawFa(f[1], gx + gw / 2, gy + 140, 25, '#b9c8e1', '600');
+    });
+
+    if (lt > 0.55) {
+      const cp = easeOutCubic(Math.min(1, (lt - 0.55) / 0.5));
+      const uy = 1235 + (1 - cp) * 40;
+      roundRect(75, uy, W - 150, 132, 32, 'rgba(15,23,42,0.96)', 'rgba(96,165,250,0.9)', 3);
+      drawFa('🔗 آدرس مستقیم سایت (لینک در بیو):', W / 2, uy + 42, 25, '#93c5fd', '700');
+      drawEn('nabzkhabarofficial.github.io/nabz-tools', W / 2, uy + 94, 30, '#ffffff', true);
+
+      const btnY = 1425 + (1 - cp) * 40;
+      const glow = 12 + 8 * Math.sin(t * 7);
+      roundRect(105 - glow, btnY - glow, W - 210 + glow * 2, 136 + glow * 2, 44, 'rgba(124,58,237,0.32)', null);
+      roundRect(105, btnY, W - 210, 136, 38, '#6366f1', '#e0e7ff', 3);
+      drawFa('📌 این پست رو ذخیره کن و برای دوستات بفرست!', W / 2, btnY + 68, 34, '#ffffff', '900');
+    }
+  }
+
+  function renderAt(t) {
+    drawBackground(t);
+    drawTopBar(t);
+
+    if (t < 3.6) {
+      renderScene1(t);
+    } else if (t < 7.8) {
+      renderCategory(t, t - 3.6, 'بخش اول • ۹ ابزار مالی', '💵 مالی، ارز، طلا و دستمزد', 'همه محاسبات مالی و نرخ‌های بازار در یک نگاه', '52,211,153', [
+        ['قیمت لحظه‌ای دلار، طلا و سکه', 'به‌روزرسانی خودکار نرخ بازار آزاد و تتر', 'بروزرسانی زنده', '📈', '52,211,153'],
+        ['محاسبه دقیق قیمت فاکتور طلا', 'محاسبه گرم، اجرت ساخت، سود و مالیات', 'محاسبه‌گر طلا', '💍', '251,191,36'],
+        ['حقوق و مالیات پلکانی ۱۴۰۵', 'محاسبه حقوق خالص، بیمه و معافیت جدید', 'قانون ۱۴۰۵', '💼', '96,165,250'],
+        ['وام، سود سپرده و رهن و اجاره', 'جدول اقساط وام، سود مرکب و تبدیل ودیعه', 'ابزار بانکی', '🏦', '167,139,250']
+      ], '✨ همراه با محاسبه تخفیف، مالیات ارزش افزوده و درصد');
+    } else if (t < 11.8) {
+      renderCategory(t, t - 7.8, 'بخش دوم • ۴ ابزار بومی', '🇮🇷 مخصوص ایران و فارسی', 'طراحی‌شده برای نیازهای روزمره و اداری کاربر ایرانی', '56,189,248', [
+        ['اعتبارسنجی کد ملی، کارت و شبا', 'بررسی صحت شماره و تشخیص فوری نام بانک', 'تشخیص بانک', '🪪', '56,189,248'],
+        ['تبدیل تاریخ شمسی، میلادی و قمری', 'تبدیل دقیق تاریخ به همراه نام روز هفته', 'تقویم دقیق', '📆', '244,114,182'],
+        ['تبدیل عدد به حروف فارسی', 'نوشتن مبلغ چک و فاکتور به تومان و ریال', 'مبلغ چک', '🔤', '251,191,36'],
+        ['تبدیل ارقام و اصلاح حروف فارسی', 'تبدیل اعداد انگلیسی و اصلاح ی و ک عربی', 'اصلاح متن', '۱۲', '52,211,153']
+      ], '🔒 بدون ارسال اطلاعات بانکی یا کد ملی به هیچ سروری!');
+    } else if (t < 15.8) {
+      renderCategory(t, t - 11.8, 'بخش سوم • ۷ ابزار رسانه', '🖼️ تصویر، صدا و هوش مصنوعی', 'ویرایش عکس و صدا مستقیماً داخل مرورگر گوشی و سیستم', '192,132,252', [
+        ['ساخت کارائوکه با هوش مصنوعی', 'حذف صدای خواننده و ساخت موزیک بی‌کلام', 'هوش مصنوعی', '🎤', '192,132,252'],
+        ['تبدیل عکس به نقاشی رنگ‌آمیزی', 'تبدیل هر عکس به طرح خطی برای کودکان', 'طرح خطی', '🖍️', '244,114,182'],
+        ['فشرده‌سازی، تغییر سایز و فرمت عکس', 'کاهش حجم تصویر و تبدیل سریع فرمت‌ها', 'پردازش تصویر', '🖼️', '56,189,248'],
+        ['تبدیل عکس به PDF و ساخت QR Code', 'ساخت فایل پی‌دی‌اف چندصفحه‌ای و بارکد', 'فایل و بارکد', '📄', '52,211,153']
+      ], '🛡️ فایل‌ها و عکس‌های شخصی شما هرگز آپلود نمی‌شوند');
+    } else if (t < 19.6) {
+      renderCategory(t, t - 15.8, 'بخش چهارم و پنجم • ۱۳ ابزار', '✍️ متن، کدنویسی و محاسبات زمان', 'از تولید محتوا و کدنویسی تا محاسبات دقیق روزمره', '96,165,250', [
+        ['شمارشگر دقیق کلمات و کاراکتر', 'بررسی متن، تعداد جملات و زمان مطالعه', 'تولید محتوا', '✍️', '96,165,250'],
+        ['ابزارهای برنامه‌نویسی و رمزنگاری', 'فرمت JSON، کدگذاری Base64، هش و رمز امن', 'مخصوص دولوپرها', '🔑', '52,211,153'],
+        ['محاسبه سن دقیق و اختلاف دو تاریخ', 'محاسبه فاصله روزها و سن به سال و ماه و روز', 'محاسبات زمان', '🎂', '251,191,36'],
+        ['شاخص توده بدنی و تبدیل واحدها', 'محاسبه وزن ایده‌آل، طول، وزن و زمان یونیکس', 'سلامت و مهندسی', '⚖️', '244,114,182']
+      ], '⌨️ دسترسی آنی به تمام ۳۳ ابزار با کلید میانبر Ctrl+K');
+    } else {
+      renderScene6(t, t - 19.6);
+    }
+
+    // Highlight active scene in UI
+    const items = document.querySelectorAll('.scene-item');
+    const cuts = [0, 3.6, 7.8, 11.8, 15.8, 19.6, 24.1];
+    items.forEach((el, idx) => {
+      el.classList.toggle('active', t >= cuts[idx] && t < cuts[idx + 1]);
+    });
+  }
+
+  // WebAudio Synth Soundtrack
+  function startSoundtrack(recordMode = false) {
+    if (audioCtx) { try { audioCtx.close(); } catch(e){} }
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioDest = recordMode ? audioCtx.createMediaStreamDestination() : null;
+    const master = audioCtx.createGain();
+    master.gain.value = 0.25;
+    master.connect(audioCtx.destination);
+    if (audioDest) master.connect(audioDest);
+
+    const now = audioCtx.currentTime;
+    const arp = [220, 261.63, 329.63, 440, 329.63, 261.63, 246.94, 196];
+    const totalSteps = Math.floor(DURATION / 0.25);
+
+    for (let s = 0; s < totalSteps; s++) {
+      const st = now + s * 0.25;
+      // Pluck
+      const osc = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(arp[s % arp.length] * 2, st);
+      g.gain.setValueAtTime(0.18, st);
+      g.gain.exponentialRampToValueAtTime(0.001, st + 0.22);
+      osc.connect(g); g.connect(master);
+      osc.start(st); osc.stop(st + 0.23);
+
+      // Soft Kick every 0.5s
+      if (s % 2 === 0) {
+        const kOsc = audioCtx.createOscillator();
+        const kG = audioCtx.createGain();
+        kOsc.type = 'sine';
+        kOsc.frequency.setValueAtTime(125, st);
+        kOsc.frequency.exponentialRampToValueAtTime(42, st + 0.16);
+        kG.gain.setValueAtTime(0.45, st);
+        kG.gain.exponentialRampToValueAtTime(0.001, st + 0.2);
+        kOsc.connect(kG); kG.connect(master);
+        kOsc.start(st); kOsc.stop(st + 0.21);
+      }
+    }
+  }
+
+  function loop(ts) {
+    if (!playing) return;
+    if (!startTime) startTime = ts - currentTime * 1000;
+    currentTime = (ts - startTime) / 1000;
+    if (currentTime >= DURATION) {
+      currentTime = 0;
+      startTime = ts;
+    }
+    renderAt(currentTime);
+    animId = requestAnimationFrame(loop);
+  }
+
+  document.getElementById('playBtn').addEventListener('click', () => {
+    const btn = document.getElementById('playBtn');
+    if (playing) {
+      playing = false;
+      cancelAnimationFrame(animId);
+      if (audioCtx) { try { audioCtx.close(); } catch(e){} audioCtx = null; }
+      btn.textContent = '▶ ادامه پخش';
+      document.getElementById('statusText').textContent = 'متوقف شد • برای ادامه کلیک کن';
+    } else {
+      playing = true;
+      startTime = 0;
+      startSoundtrack(false);
+      btn.textContent = '⏸ توقف پخش';
+      document.getElementById('statusText').textContent = 'در حال پخش انیمیشن و موزیک...';
+      animId = requestAnimationFrame(loop);
+    }
+  });
+
+  document.querySelectorAll('.scene-item').forEach(el => {
+    el.addEventListener('click', () => {
+      currentTime = parseFloat(el.dataset.time) + 1.25;
+      startTime = 0;
+      renderAt(currentTime);
+    });
+  });
+
+  document.getElementById('recBtn').addEventListener('click', () => {
+    const recBtn = document.getElementById('recBtn');
+    const playBtn = document.getElementById('playBtn');
+    const status = document.getElementById('statusText');
+    recBtn.disabled = true;
+    playBtn.disabled = true;
+    playing = false;
+    cancelAnimationFrame(animId);
+
+    startSoundtrack(true);
+    const canvasStream = canvas.captureStream(30);
+    if (audioDest) {
+      audioDest.stream.getAudioTracks().forEach(tr => canvasStream.addTrack(tr));
+    }
+
+    let mime = 'video/mp4';
+    if (!MediaRecorder.isTypeSupported(mime)) {
+      mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+    }
+    const ext = mime.includes('mp4') ? 'mp4' : 'webm';
+    const recorder = new MediaRecorder(canvasStream, { mimeType: mime, videoBitsPerSecond: 6000000 });
+    const chunks = [];
+    recorder.ondataavailable = e => { if (e.data && e.data.size > 0) chunks.push(e.data); };
+    recorder.onstop = () => {
+      const blob = new Blob(chunks, { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `nabz-tools-reel.${ext}`;
+      a.click();
+      status.textContent = '✅ فایل ویدئو با موفقیت دانلود شد!';
+      recBtn.disabled = false;
+      playBtn.disabled = false;
+      if (audioCtx) { try { audioCtx.close(); } catch(e){} audioCtx = null; }
+    };
+
+    recorder.start();
+    const recStart = performance.now();
+    function recStep(now) {
+      const elapsed = (now - recStart) / 1000;
+      if (elapsed >= DURATION) {
+        renderAt(DURATION - 0.05);
+        recorder.stop();
+        return;
+      }
+      renderAt(elapsed);
+      const pct = Math.min(100, Math.round((elapsed / DURATION) * 100));
+      status.textContent = `⏳ در حال ضبط و رندر ویدئو با کیفیت بالا: ${toFaDigits(pct)}٪ ...`;
+      requestAnimationFrame(recStep);
+    }
+    requestAnimationFrame(recStep);
+  });
+
+  // Initial draw at 1.5s
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => renderAt(1.5));
+  } else {
+    setTimeout(() => renderAt(1.5), 300);
+  }
+})();
+</script>
+</body>
+</html>
